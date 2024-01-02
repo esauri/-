@@ -31,6 +31,26 @@ export default {
 	theme: {
 		extend: {
 			colors,
+			fontFamily: {
+				sans: [
+					"ui-sans-serif",
+					"system-ui",
+					"sans-serif",
+					"Apple Color Emoji",
+					"Segoe UI Emoji",
+					"Segoe UI Symbol",
+					"Noto Color Emoji",
+				],
+				serif: [
+					"var(--es-font-serif)",
+					"ui-serif",
+					"Georgia",
+					"Cambria",
+					"Times New Roman",
+					"Times",
+					"serif",
+				],
+			},
 		},
 	},
 	plugins: [

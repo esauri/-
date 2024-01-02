@@ -4,6 +4,8 @@
 
 @layer base {
   :root {
+    --es-font-serif: "Lora";
+
     --es-black: 0 0% 1%;
     --es-gray-darkest: 0 11% 9%;
     --es-gray-darker: 0 0% 13%;
@@ -28,6 +30,14 @@
     --es-muted-foreground: var(--es-gray-dark);
   }
 
+  @font-face {
+    font-family: var(--es-font-serif);
+    src: url("/fonts/lora-variable.ttf") format("ttf");
+    font-weight: 125 950;
+    font-stretch: 75% 125%;
+    font-style: normal;
+  }
+
   .dark {
     --es-background: var(--es-black);
     --es-foreground: var(--es-white);
@@ -44,22 +54,7 @@
 	--box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
 		0 16px 32px rgba(var(--gray), 33%);
 }
-@font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-regular.woff') format('woff');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-bold.woff') format('woff');
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
 body {
-	font-family: 'Atkinson', sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
