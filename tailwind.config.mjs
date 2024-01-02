@@ -31,8 +31,14 @@ export default {
 	theme: {
 		extend: {
 			colors,
-			container: {
-				center: true,
+			container(theme) {
+				return {
+					center: true,
+					padding: {
+						DEFAULT: theme.theme("spacing.6"),
+						xl: theme.theme("spacing.20"),
+					},
+				};
 			},
 			fontFamily: {
 				sans: [
