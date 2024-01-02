@@ -31,6 +31,9 @@ export default {
 	theme: {
 		extend: {
 			colors,
+			container: {
+				center: true,
+			},
 			fontFamily: {
 				sans: [
 					"ui-sans-serif",
