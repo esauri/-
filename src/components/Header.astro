@@ -21,10 +21,22 @@ import NavLink from "./NavLink.astro";
         <NavLink href="/blog">Blog</NavLink>
       </li>
       <li>
-        <NavLink href={PERSONAL_LINKS.github} target="_blank">Github</NavLink>
+        <NavLink
+          href={PERSONAL_LINKS.github}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Github
+        </NavLink>
       </li>
       <li>
-        <NavLink href={PERSONAL_LINKS.resume} target="_blank">Resumé</NavLink>
+        <NavLink
+          href={PERSONAL_LINKS.resume}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Resumé
+        </NavLink>
       </li>
     </ul>
   </nav>

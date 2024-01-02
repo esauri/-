@@ -8,17 +8,22 @@ const today = new Date();
 <footer class="bg-foreground text-background py-8 lg:py-16">
   <ul class="container grid lg:grid-cols-4">
     <li class="flex items-center justify-center py-4">
-      &copy; {today.getFullYear()}
-      {AUTHOR_NAME}. All rights reserved.
+      &copy;
+      {AUTHOR_NAME}
+      {today.getFullYear()}
     </li>
     <li class="flex items-center justify-center py-4">
-      <a href={PERSONAL_LINKS.github} target="_blank">
+      <a href={PERSONAL_LINKS.github} rel="noopener noreferrer" target="_blank">
         <span class="sr-only">Go to {AUTHOR_NAME}'s Github profile</span>
         <GithubIcon />
       </a>
     </li>
     <li class="flex items-center justify-center py-4">
-      <a href={PERSONAL_LINKS.linkedIn} target="_blank">
+      <a
+        href={PERSONAL_LINKS.linkedIn}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
         <span class="sr-only">View {AUTHOR_NAME}'s LinkedIn profile</span>
         <LinkedinIcon />
       </a>

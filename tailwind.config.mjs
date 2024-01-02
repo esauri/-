@@ -9,9 +9,20 @@ function getHSLColor(name) {
 	return `hsl(var(--${name}) / <alpha-value>)`;
 }
 
+/**
+ * Returns color value from Tailwind theme
+ *
+ * @param {string} val
+ * @returns string
+ */
+function getTypographyColor(val) {
+	return val.replace("<alpha-value>", "var(--tw-text-opacity)");
+}
+
 const colors = {
 	background: getHSLColor("es-background"),
 	foreground: getHSLColor("es-foreground"),
+	border: getHSLColor("es-border"),
 	primary: {
 		DEFAULT: getHSLColor("es-primary"),
 		foreground: getHSLColor("es-primary-foreground"),
@@ -60,9 +71,33 @@ export default {
 					"serif",
 				],
 			},
+			typography(theme) {
+				const serifFontFamily = theme("fontFamily.serif").join(", ");
+
+				return {
+					DEFAULT: {
+						css: {
+							"--tw-prose-body": getTypographyColor(theme("colors.foreground")),
+							"--tw-prose-bullets": getTypographyColor(theme("colors.border")),
+							"--tw-prose-counters": getTypographyColor(theme("colors.border")),
+							"--tw-prose-links": getTypographyColor(theme("colors.primary.DEFAULT")),
+							"--tw-prose-quote-borders": getTypographyColor(theme("colors.border")),
+							maxWidth: "none",
+							// Elements
+							p: {
+								fontFamily: serifFontFamily,
+							},
+							li: {
+								fontFamily: serifFontFamily,
+							},
+						},
+					},
+				};
+			},
 		},
 	},
 	plugins: [
+		require("tailwind-scrollbar-hide"),
 		require("@tailwindcss/typography"),
 	],
 }

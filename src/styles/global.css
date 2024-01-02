@@ -38,6 +38,23 @@
     font-style: normal;
   }
 
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  html {
+    box-sizing: border-box;
+    font-size: 18px;
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+
   .dark {
     --es-background: var(--es-black);
     --es-foreground: var(--es-white);
@@ -46,5 +63,25 @@
   a {
     color: hsl(var(--es-primary) / var(--tw-text-opacity));
     text-decoration: none;
+  }
+}
+
+@layer components {
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 960px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1024px;
+    }
   }
 }
