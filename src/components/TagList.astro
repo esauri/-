@@ -10,7 +10,7 @@ const { scrollable } = Astro.props;
   class:list={[
     "flex gap-1.5 items-center",
     {
-      "flex-row overflow-x-auto scrollbar-hide -mx-6 lg:mx-0 scroll-pl-6 lg:px-0":
+      "flex-row overflow-x-auto scrollbar-hide -mx-6 md:-mx-12 lg:mx-0 scroll-pl-6 md:scroll-pl-12 lg:px-0 lg:mx-0":
         scrollable,
       "flex-wrap pl-0": !scrollable,
     },
