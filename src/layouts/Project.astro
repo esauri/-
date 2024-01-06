@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Tag from "../components/Tag.astro";
 import TagList from "../components/TagList.astro";
+import { AUTHOR_NAME } from "../consts";
 
 type Props = CollectionEntry<"projects">["data"];
 
@@ -14,7 +15,11 @@ const { description, heroImageClass, heroImageSrc, tags, title } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead description={description} image={heroImageSrc} title={title} />
+    <BaseHead
+      description={description}
+      image={heroImageSrc}
+      title={`${AUTHOR_NAME} - ${title}`}
+    />
     <style>
       .banner {
         height: calc(100vh - 72px);
