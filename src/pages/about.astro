@@ -1,6 +1,6 @@
 ---
 import { getEntry } from "astro:content";
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import { PERSONAL_LINKS } from "../consts";
 
 const about = await getEntry("misc", "about");
@@ -8,7 +8,7 @@ const about = await getEntry("misc", "about");
 const { Content } = await about.render();
 ---
 
-<Layout>
+<BaseLayout>
   <main class="flex flex-col gap-6 pt-6" id="main-content">
     <!-- Picture -->
     <figure>
@@ -36,4 +36,4 @@ const { Content } = await about.render();
       </section>
     </section>
   </main>
-</Layout>
+</BaseLayout>

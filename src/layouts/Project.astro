@@ -1,0 +1,85 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+type Props = CollectionEntry<"projects">["data"];
+
+const { description, heroImageClass, heroImageSrc, tags, title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead description={description} image={heroImageSrc} title={title} />
+    <style>
+      .banner {
+        height: calc(100vh - 70px);
+      }
+
+      @supports (height: 100dvh) {
+        .banner {
+          height: calc(100dvh - 70px);
+        }
+      }
+
+      .banner__chevron-down {
+        position: absolute;
+        left: 50%;
+        bottom: 1em;
+        width: 20px;
+        height: 20px;
+        border-style: solid;
+        border-width: 0 1px 1px 0;
+        border-radius: 0 0 4px;
+        transform-origin: 0 100%;
+        transform: rotate(45deg) translateX(-50%);
+        animation: signal 1s ease-out infinite;
+      }
+
+      @keyframes signal {
+        0% {
+          bottom: 4em;
+          opacity: 0;
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+          bottom: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body class="antialiased bg-background text-foreground font-sans">
+    <Header />
+    <main>
+      <!-- Hero Banner -->
+      <section
+        class:list={[
+          heroImageClass,
+          "relative flex justify-center items-center w-full min-h-96 bg-center bg-cover bg-scroll bg-no-repeat banner",
+        ]}
+      >
+        <span class="banner__chevron-down"></span>
+      </section>
+      <!-- Project Details -->
+      <article class="container prose py-6">
+        <ul class="flex flex-wrap gap-1.5 items-center pl-0">
+          {
+            tags.map((tag) => (
+              <li class="font-bold font-sans list-none text-primary">{tag}</li>
+            ))
+          }
+        </ul>
+        <h1>TipTap</h1>
+        <slot />
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

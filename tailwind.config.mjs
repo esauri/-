@@ -45,6 +45,15 @@ export default {
 	darkMode: ["class"],
 	theme: {
 		extend: {
+			backgroundImage: {
+				horsemask: "url('/images/horsemasks/dawnofthelivinghorsemasks.png')",
+				"neighbor-post": "url('/images/patch/qp_banner.jpg')",
+				poseidon: "url('/images/poseidon/poseidon_dark.jpg')",
+				tiptap: "url('/images/tiptap/tiptap_banner.jpg')",
+				"trump-card": "url('/images/trumpcard/public/large/banner.jpg')",
+				"two-seven-zero": "url('/images/270/public/large/banner.jpg')",
+				venu: "url('/images/venu/thumbnail.jpeg')",
+			},
 			colors,
 			container(theme) {
 				return {
