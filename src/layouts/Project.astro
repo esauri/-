@@ -17,12 +17,12 @@ const { description, heroImageClass, heroImageSrc, tags, title } = Astro.props;
     <BaseHead description={description} image={heroImageSrc} title={title} />
     <style>
       .banner {
-        height: calc(100vh - 70px);
+        height: calc(100vh - 72px);
       }
 
       @supports (height: 100dvh) {
         .banner {
-          height: calc(100dvh - 70px);
+          height: calc(100dvh - 72px);
         }
       }
 

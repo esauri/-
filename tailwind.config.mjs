@@ -60,6 +60,7 @@ export default {
 					center: true,
 					padding: {
 						DEFAULT: theme.theme("spacing.6"),
+						md: theme.theme("spacing.8"),
 						xl: theme.theme("spacing.20"),
 					},
 				};
