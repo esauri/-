@@ -9,10 +9,7 @@ const { className, href, title }: Props = Astro.props;
 ---
 
 <a
-  class:list={[
-    "block group/card relative h-96 overflow-hidden md:rounded-2xl",
-    className,
-  ]}
+  class:list={["block group/card relative h-96 overflow-hidden", className]}
   href={href}
   title={title}
 >

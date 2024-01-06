@@ -5,7 +5,7 @@ tags: ["Angular 4", "Ionic Framework", "Firebase"]
 pubDate: "June 1 2017"
 icon: "/images/poseidon/icon.png"
 banner: "bg-poseidon"
-thumbnail: "/images/poseidon/poseidon_home.jpg"
+thumbnail: "/images/poseidon/poseidon_dark.jpg"
 ---
 
 ## About Poseidon

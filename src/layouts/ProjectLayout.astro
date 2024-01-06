@@ -1,15 +1,26 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ProjectCardDescription from "../components/ProjectCardDescription.astro";
+import ProjectCardThumbnail from "../components/ProjectCardThumbnail.astro";
+import ProjectCardTitle from "../components/ProjectCardTitle.astro";
 import Tag from "../components/Tag.astro";
 import TagList from "../components/TagList.astro";
 import { AUTHOR_NAME } from "../consts";
 
 type Props = CollectionEntry<"projects">["data"];
 
+const { slug } = Astro.params;
 const { banner, description, tags, thumbnail, title } = Astro.props;
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const recirc = projects.filter((project) => project.slug !== slug).slice(0, 3);
 ---
 
 <!doctype html>
@@ -84,6 +95,36 @@ const { banner, description, tags, thumbnail, title } = Astro.props;
         <h1>{title}</h1>
         <slot />
       </article>
+      {
+        recirc.length > 0 && (
+          <section class="flex flex-col gap-6">
+            <div class="container prose">
+              <h2>More Projects</h2>
+            </div>
+            <ul class="grid md:grid-cols-2 lg:grid-cols-3">
+              {recirc.map((project) => (
+                <li>
+                  <ProjectCard
+                    href={`/projects/${project.slug}`}
+                    title={project.data.title}
+                  >
+                    <ProjectCardThumbnail
+                      thumbnail={project.data.thumbnail}
+                      title={project.data.title}
+                    />
+                    <div class="absolute bottom-6 right-6 text-right">
+                      <ProjectCardTitle>{project.data.title}</ProjectCardTitle>
+                      <ProjectCardDescription>
+                        {project.data.description}
+                      </ProjectCardDescription>
+                    </div>
+                  </ProjectCard>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
     </main>
     <Footer />
   </body>
