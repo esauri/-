@@ -70,7 +70,7 @@ const { description, heroImageClass, heroImageSrc, tags, title } = Astro.props;
         <span class="banner__chevron-down"></span>
       </section>
       <!-- Project Details -->
-      <article class="container prose py-6">
+      <article class="container prose py-6 prose-img:rounded-lg">
         <TagList scrollable>
           {tags.map((tag) => <Tag>{tag}</Tag>)}
         </TagList>
