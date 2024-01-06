@@ -31,6 +31,10 @@ const colors = {
 		DEFAULT: getHSLColor("es-muted"),
 		foreground: getHSLColor("es-muted-foreground"),
 	},
+	card: {
+		DEFAULT: getHSLColor("es-card"),
+		foreground: getHSLColor("es-card-foreground"),
+	},
 };
 
 // #endregion
@@ -78,8 +82,10 @@ export default {
 					DEFAULT: {
 						css: {
 							"--tw-prose-body": getTypographyColor(theme("colors.foreground")),
+							"--tw-prose-bold": getTypographyColor(theme("colors.foreground")),
 							"--tw-prose-bullets": getTypographyColor(theme("colors.border")),
 							"--tw-prose-counters": getTypographyColor(theme("colors.border")),
+							"--tw-prose-headings": getTypographyColor(theme("colors.foreground")),
 							"--tw-prose-links": getTypographyColor(theme("colors.primary.DEFAULT")),
 							"--tw-prose-quote-borders": getTypographyColor(theme("colors.border")),
 							maxWidth: "none",

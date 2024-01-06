@@ -21,13 +21,16 @@
     /* Theme */
     --es-background: var(--es-white);
     --es-foreground: var(--es-black);
-    --es-border: var(--es-gray);
+    --es-border: var(--es-gray-light);
 
     --es-primary: var(--es-red);
     --es-primary-foreground: var(--es-white);
 
     --es-muted: var(--es-gray);
-    --es-muted-foreground: var(--es-gray-dark);
+    --es-muted-foreground: var(--es-white);
+
+    --es-card: var(--es-gray-light);
+    --es-card-foreground: var(--es-black);
   }
 
   @font-face {
@@ -45,19 +48,40 @@
     margin: 0;
   }
 
-  html {
-    box-sizing: border-box;
-    font-size: 18px;
-    word-spacing: 1px;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --es-background: var(--es-gray-darkest);
+      --es-foreground: var(--es-white);
+      --es-border: var(--es-gray-darker);
 
-  .dark {
-    --es-background: var(--es-black);
-    --es-foreground: var(--es-white);
+      --es-muted: var(--es-gray-dark);
+      --es-muted-foreground: var(--es-white);
+
+      --es-card: var(--es-gray-darker);
+      --es-card-foreground: var(--es-white);
+    }
+
+    .dark {
+      --es-background: var(--es-gray-darkest);
+      --es-foreground: var(--es-white);
+      --es-border: var(--es-gray-darker);
+
+      --es-muted: var(--es-gray-dark);
+      --es-muted-foreground: var(--es-white);
+
+      --es-card: var(--es-gray-darker);
+      --es-card-foreground: var(--es-white);
+    }
+
+    html {
+      box-sizing: border-box;
+      font-size: 18px;
+      word-spacing: 1px;
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+    }
   }
 
   a {
