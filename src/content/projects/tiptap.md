@@ -2,6 +2,7 @@
 title: "TipTap"
 description: "Tipping made easy!"
 tags: ["React Native"]
+pubDate: "Feb 1 2018"
 icon: "/images/tiptap/tiptap_icon.png"
 banner: "bg-tiptap"
 thumbnail: "/images/tiptap/tiptap_banner.jpg"

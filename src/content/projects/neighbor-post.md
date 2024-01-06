@@ -2,6 +2,7 @@
 title: "Neighbor Posts"
 description: "What's happening nearby?"
 tags: ["Vue", "Drupal 7", "PHP"]
+pubDate: "Jan 1 2019"
 icon: "/images/patch/patch-icon.png"
 banner: "bg-neighbor-post"
 thumbnail: "/images/patch/qp_thumbnail.jpg"

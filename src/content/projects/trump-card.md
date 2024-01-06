@@ -2,6 +2,7 @@
 title: "Trump Card"
 description: "Make America Great Again?"
 tags: ["Swift"]
+pubDate: "Dec 15 2016"
 icon: "/images/trumpcard/public/small/avatar.png"
 banner: "bg-trump-card"
 thumbnail: "/images/trumpcard/public/large/thumbnail.jpg"

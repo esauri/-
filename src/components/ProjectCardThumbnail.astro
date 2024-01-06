@@ -1,0 +1,16 @@
+---
+type Props = {
+  thumbnail: string;
+  title: string;
+};
+
+const { thumbnail, title }: Props = Astro.props;
+---
+
+<img
+  alt={`${title} thumbnail`}
+  class="h-full object-cover scale-110 w-full group-hover/card:scale-100 transition-transform duration-200"
+  height="384"
+  src={thumbnail}
+  width="384"
+/>

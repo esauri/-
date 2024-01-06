@@ -2,6 +2,7 @@
 title: "Dawn of the Living Horsemasks"
 description: "Apocalypse now"
 tags: ["Unity", "C#", "Game Development"]
+pubDate: "May 15 2016"
 icon: "/images/horsemasks/avatar.png"
 banner: "bg-horsemask"
 thumbnail: "/images/horsemasks/dawnofthelivinghorsemasks.png"

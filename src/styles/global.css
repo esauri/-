@@ -91,6 +91,10 @@
 }
 
 @layer components {
+  .text-shadow {
+    text-shadow: 0.5px 0.5px 0.5px hsl(var(--es-black) / 1);
+  }
+
   @media (min-width: 1024px) {
     .container {
       max-width: 960px;
