@@ -1,0 +1,79 @@
+---
+title: "270"
+description: "Race to the White House"
+tags: ["Ionic Framework", "AngularJS"]
+icon: "/images/270/public/small/avatar.png"
+banner: "bg-two-seven-zero"
+thumbnail: "/images/270/public/small/thumbnail2.jpg"
+---
+
+import Video from "../../components/Video.astro";
+
+Race to the White House in the U.S. Government and History trivia game **270**. Select a party and run as that party's candidate. Travel to important battleground states and answer questions in order to obtain enough votes to win the state and get electoral votes necessary to become the President of the United States.
+
+In order for the candidate to win the Presidency, they must earn at least **270** electoral votes. Players must then enter a state where they have several random trivia to answer. Players earn percentages of a state's vote if they answer trivia correctly. In order to get all of the electoral votes in a state their vote percentage must exceed **50%**. Once enough states have been won to reach **270** electoral votes the player becomes President-Elect of the United States of America.
+
+## Mockups
+
+![Mockup of the home views](/images/270/public/medium/mockupMainScreens.jpg)
+
+These are the first designs of the app views. Not much has changed from these views other than the tab bar, which due to time constraints had to be limited. The **Messages** tab was intended so that the user could receive fake mail from interest groups, super pacs and 501(c)s for support and in game currency to be used in the trivia section.
+
+The **Statistics** and **Me** tabs were consolidated in the final version into one section where users can view their candidate profile and their vote percentages in each state. Another aspect that changed was how the electoral votes were displayed. Originally, I wasn't going to include vote percentages and each trivia question would grant a specific number to electoral votes if answered correctly.
+
+![Mockup of the trivia views](/images/270/public/medium/mockupTriviaScreens.jpg)
+
+As for the trivia views little changed other than the tab bar with different helpers users could call if they wanted to. Players were supposed to use the currency earned in game to purchase these helpers.
+
+![Perspective view of all the app screens](/images/270/public/medium/thumbnail.jpg)
+
+## Final Product
+
+### Home View
+
+![Home screen for the Democratic Party candidate](/images/270/public/medium/demStates.png)
+
+Due to time constraints on the project I decided to make enough trivia for only 10 states. I chose ten battleground states according to the results from the 2012 election. These states were: **Colorado**, **Florida**, **Iowa** **Nevada**, **New Hampshire**, **North Carolina**, **Ohio**, **Pennsylvania**, **Virginia**, and **Wisconsin**.
+
+Since I was excluding 40 other states and the **District of Columbia**, I allotted their electoral votes to the candidate that had the best shot at winning them, again based on the 2012 election. This gave an edge to the Democrat Presidential Candidate who started with 217 electoral votes while the Republican Presidential Candidate began with 191.
+
+![Home screen for the Republican Party candidate](/images/270/public/medium/gopStates.png)
+
+The states with the partisan background represent states that have already been completed while the states with the partisan fill are states where the winner hasn't yet been called.
+
+I also removed tabs I had in the mockup designs. **Me** now showed the player's vote totals in each state as well as a button to reset the game, where they would go back to the start view and select a party. The **How to Play** tab had simple instructions on how the game worked and its several mechanics.
+
+![270 Republican candidate Iowa State View](/images/270/public/medium/state.png)
+
+### State View
+
+To get the electoral votes in a state the player has to obtain over 50% of the vote percentage in that state. Each state has a certain number of electoral votes based on the actual number during the 2010 - 2020 period, as an example Iowa has 6 electoral votes.
+
+Each card contains a random question and they vary from easy to difficult based on the amount of votes they grant. The higher the vote the harder the question while lower vote percentages have easier questions.
+
+The cards and their percentages all vary by state. No two states have the same layout. Once a trivia has been answered the card's background changes to the partisan color.
+
+### Trivia View
+
+![View for when trivia has been correctly answered](/images/270/public/medium/triviaCorrect.png)
+
+Each trivia question has a category and four possible choices, one of them being the correct answer. The choices are all randomly ordered as to not give the player any hints on which might be the correct answer.
+
+When choosing an answer, if it is incorrect an overlay will appear over the question with a red background telling the player that the answer was wrong and that they don't get any votes.
+
+![View for when trivia has been incorrectly answered](/images/270/public/medium/triviaWrong.png)
+
+If the player answers correctly, they will be told by how much did they score increase in that state.
+
+The player can also forfeit the question by tapping on the back key in the top bar. Their opponent will get the vote percentage increase for that question.
+
+## Gameplay
+
+<Video
+  src="https://player.vimeo.com/video/183411950"
+  title="270 Gameplay Video"
+/>
+
+## Parting Thoughts
+
+270 was a fun project to work on and the end result was a fun and replayable game that can easily be expanded. During the development cycle I learned a lot about the technologies I used to make it, which I had no experience with such as AngularJS. I also got more experience working with the model-view-controller pattern which made my app's organization clear and effective. As a solo project I was also able to get a sense of what it takes to create a minimum viable product and learn from appropriately scoping my project. As my first app I feel more excited to delve deeper into mobile development, including progressive web apps, hybrid apps, and native apps.

@@ -1,0 +1,20 @@
+---
+type Props = {
+  src: string;
+  title: string;
+};
+
+const { src, title } = Astro.props;
+---
+
+<section class="h-0 overflow-hidden relative pb-[56.25%]">
+  <iframe
+    allowfullscreen
+    class="top-0 left-0 w-full h-full absolute"
+    height="236"
+    src={src}
+    title={title}
+    width="420"
+  >
+  </iframe>
+</section>
