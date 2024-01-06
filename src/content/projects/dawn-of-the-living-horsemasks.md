@@ -3,8 +3,8 @@ title: "Dawn of the Living Horsemasks"
 description: "Apocalypse now"
 tags: ["Unity", "C#", "Game Development"]
 icon: "/images/horsemasks/avatar.png"
-heroImageClass: "bg-horsemask"
-heroImageSrc: "/images/horsemasks/dawnofthelivinghorsemasks.png"
+banner: "bg-horsemask"
+thumbnail: "/images/horsemasks/dawnofthelivinghorsemasks.png"
 ---
 
 ## Apocalypse now

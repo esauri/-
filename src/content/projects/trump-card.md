@@ -3,8 +3,8 @@ title: "Trump Card"
 description: "Make America Great Again?"
 tags: ["Swift"]
 icon: "/images/trumpcard/public/small/avatar.png"
-heroImageClass: "bg-trump-card"
-heroImageSrc: "/images/trumpcard/public/large/thumbnail.jpg"
+banner: "bg-trump-card"
+thumbnail: "/images/trumpcard/public/large/thumbnail.jpg"
 ---
 
 Trump Card is an iOS app I developed for my Mobile App Dev class. In the game the player takes the role of Donald J. Trump as the Presidential nominee. The setting is a press conference where players are asked questions by the press and each question has two choices, one choice is generally a response a calmer, and subdued Donald Trump would give while the second choice is an off-the-cuff answer an agitated Trump would say. Each choice is actually a direct quote or a paraphrased version of an actual Trump quote. There is also a list with all the Trump quotes used in the game and they are all referenced and some have audio clips attached that play when a card swipe is made.

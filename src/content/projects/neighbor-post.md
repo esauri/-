@@ -3,8 +3,8 @@ title: "Neighbor Posts"
 description: "What's happening nearby?"
 tags: ["Vue", "Drupal 7", "PHP"]
 icon: "/images/patch/patch-icon.png"
-heroImageClass: "bg-neighbor-post"
-heroImageSrc: "/images/patch/qp_thumbnail.jpg"
+banner: "bg-neighbor-post"
+thumbnail: "/images/patch/qp_thumbnail.jpg"
 ---
 
 ## About Patch

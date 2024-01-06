@@ -3,8 +3,8 @@ title: "Poseidon Live"
 description: "Asset health monitoring"
 tags: ["Angular 4", "Ionic Framework", "Firebase"]
 icon: "/images/poseidon/icon.png"
-heroImageClass: "bg-poseidon"
-heroImageSrc: "/images/poseidon/poseidon_home.jpg"
+banner: "bg-poseidon"
+thumbnail: "/images/poseidon/poseidon_home.jpg"
 ---
 
 ## About Poseidon

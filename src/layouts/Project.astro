@@ -9,7 +9,7 @@ import { AUTHOR_NAME } from "../consts";
 
 type Props = CollectionEntry<"projects">["data"];
 
-const { description, heroImageClass, heroImageSrc, tags, title } = Astro.props;
+const { banner, description, tags, thumbnail, title } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,7 +17,7 @@ const { description, heroImageClass, heroImageSrc, tags, title } = Astro.props;
   <head>
     <BaseHead
       description={description}
-      image={heroImageSrc}
+      image={thumbnail}
       title={`${AUTHOR_NAME} - ${title}`}
     />
     <style>
@@ -68,7 +68,7 @@ const { description, heroImageClass, heroImageSrc, tags, title } = Astro.props;
       <!-- Hero Banner -->
       <section
         class:list={[
-          heroImageClass,
+          banner,
           "relative flex justify-center items-center w-full min-h-96 bg-center bg-cover bg-scroll bg-no-repeat banner",
         ]}
       >

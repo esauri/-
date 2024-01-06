@@ -24,11 +24,11 @@ const misc = defineCollection({
 const projects = defineCollection({
   type: "content",
   schema: z.object({
+    banner: z.string(),
     description: z.string(),
-    heroImageClass: z.string(),
-    heroImageSrc: z.string(),
     icon: z.string(),
     tags: z.array(z.string()),
+    thumbnail: z.string(),
     title: z.string(),
   }),
 });
