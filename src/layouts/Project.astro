@@ -74,7 +74,7 @@ const { description, heroImageClass, heroImageSrc, tags, title } = Astro.props;
         <TagList scrollable>
           {tags.map((tag) => <Tag>{tag}</Tag>)}
         </TagList>
-        <h1>TipTap</h1>
+        <h1>{title}</h1>
         <slot />
       </article>
     </main>
