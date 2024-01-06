@@ -52,7 +52,7 @@ export default {
 				tiptap: "url('/images/tiptap/tiptap_banner.jpg')",
 				"trump-card": "url('/images/trumpcard/public/large/banner.jpg')",
 				"two-seven-zero": "url('/images/270/public/large/banner.jpg')",
-				venu: "url('/images/venu/thumbnail.jpeg')",
+				venu: "url('/images/venu/thumbnail.jpg')",
 			},
 			colors,
 			container(theme) {
