@@ -6,6 +6,15 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
+  integrations: [mdx(), sitemap(), solidJs(), tailwind()],
+  redirects: {
+    "/horsemask": "/projects/dawn-of-the-living-horsemasks",
+    "/poseidon": "/projects/poseidon",
+    "/quickpost": "/projects/neighbor-post",
+    "/tiptap": "/projects/tip-tap",
+    "/trumpcard": "/projects/trump-card",
+    "/twosevenzero": "/projects/two-seven-zero",
+    "/venu": "/projects/venu",
+  },
   site: 'https://ericksauri.com',
-  integrations: [mdx(), sitemap(), solidJs(), tailwind()]
 });
