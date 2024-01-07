@@ -1,5 +1,7 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry } from "astro:content";
+import { ChevronDown } from "lucide-solid";
+import { getProjects } from "../api/projects";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
@@ -16,9 +18,7 @@ type Props = CollectionEntry<"projects">["data"];
 const { slug } = Astro.params;
 const { banner, description, tags, thumbnail, title } = Astro.props;
 
-const projects = (await getCollection("projects")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const projects = await getProjects();
 
 const recirc = projects.filter((project) => project.slug !== slug).slice(0, 3);
 ---
@@ -41,36 +41,6 @@ const recirc = projects.filter((project) => project.slug !== slug).slice(0, 3);
           height: calc(100dvh - 72px);
         }
       }
-
-      .banner__chevron-down {
-        position: absolute;
-        left: 50%;
-        bottom: 1em;
-        width: 20px;
-        height: 20px;
-        border-style: solid;
-        border-width: 0 1px 1px 0;
-        border-radius: 0 0 4px;
-        transform-origin: 0 100%;
-        transform: rotate(45deg) translateX(-50%);
-        animation: signal 1s ease-out infinite;
-      }
-
-      @keyframes signal {
-        0% {
-          bottom: 4em;
-          opacity: 0;
-        }
-
-        50% {
-          opacity: 1;
-        }
-
-        100% {
-          opacity: 0;
-          bottom: 1em;
-        }
-      }
     </style>
   </head>
   <body class="antialiased bg-background text-foreground font-sans">
@@ -83,7 +53,9 @@ const recirc = projects.filter((project) => project.slug !== slug).slice(0, 3);
           "relative flex justify-center items-center w-full min-h-96 bg-center bg-cover bg-scroll bg-no-repeat banner",
         ]}
       >
-        <span class="banner__chevron-down"></span>
+        <ChevronDown
+          class="absolute animate-signal left-1/2 bottom-6 w-6 h-6"
+        />
       </section>
       <!-- Project Details -->
       <article

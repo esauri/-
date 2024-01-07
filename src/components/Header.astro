@@ -1,8 +1,13 @@
 ---
+import { MenuIcon, XIcon } from "lucide-solid";
+import { getProjects } from "../api/projects";
 import { AUTHOR_NAME, PERSONAL_LINKS } from "../consts";
 import NavLink from "./NavLink.astro";
+
+const projects = await getProjects();
 ---
 
+<!-- Header -->
 <header>
   <nav class="container flex flex-row justify-between items-center py-4">
     <a href="/">
@@ -39,5 +44,110 @@ import NavLink from "./NavLink.astro";
         </NavLink>
       </li>
     </ul>
+
+    <!-- Mobile -->
+    <button class="md:hidden" id="menu-open-trigger" type="button">
+      <MenuIcon class="h-6 w-6" />
+    </button>
   </nav>
 </header>
+<!-- Mobile Nav -->
+<nav
+  class="group/menu hidden data-[state=open]:animate-fade-in max-md:data-[state=open]:flex flex-col gap-6 absolute top-0 left-0 w-full h-full min-h-dvh bg-background z-50 overflow-y-auto"
+  data-state="closed"
+  id="mobile-nav"
+>
+  <!-- Heading -->
+  <div class="container flex flex-row justify-between items-center py-4">
+    <a href="/">
+      <img
+        alt={`${AUTHOR_NAME} Logo`}
+        class="h-8 w-8"
+        src="/images/icons/logo.svg"
+      />
+    </a>
+    <button id="menu-close-trigger" type="button">
+      <XIcon class="h-6 w-6" />
+    </button>
+  </div>
+
+  <section
+    class="container group-data-[state=open]/menu:animate-fade-in-slide-up flex flex-col gap-6 pb-12"
+  >
+    <!-- Projects -->
+    <h2 class="font-bold text-2xl text-muted">Projects</h2>
+    <ul class="flex flex-col gap-6">
+      {
+        projects.map((project) => (
+          <li>
+            <a class="flex gap-6 items-center">
+              <img
+                alt={`${project.data.title} icon`}
+                class="rounded-full w-12"
+                src={project.data.icon}
+              />
+              <span class="font-bold text-xl text-muted-foreground">
+                {project.data.title}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- General -->
+    <h2 class="font-bold text-2xl text-muted">General</h2>
+    <ul class="grid grid-cols-2 gap-6">
+      <li>
+        <a class="font-light text-lg text-white" href="/">Home</a>
+      </li>
+      <li>
+        <a class="font-light text-lg text-white" href="/about">About</a>
+      </li>
+      <li>
+        <a
+          class="font-light text-lg text-white"
+          rel="noopener noreferrer"
+          target="_blank"
+          href={PERSONAL_LINKS.github}>Github</a
+        >
+      </li>
+      <li>
+        <a
+          class="font-light text-lg text-white"
+          rel="noopener noreferrer"
+          target="_blank"
+          href={PERSONAL_LINKS.resume}>Resume</a
+        >
+      </li>
+    </ul>
+  </section>
+</nav>
+<script>
+  const closeTrigger = document.getElementById("menu-close-trigger");
+  const openTrigger = document.getElementById("menu-open-trigger");
+  const mobileNav = document.getElementById("mobile-nav");
+
+  if (!closeTrigger) {
+    throw new Error("Menu button not found");
+  }
+
+  if (!openTrigger) {
+    throw new Error("Menu button not found");
+  }
+
+  if (!mobileNav) {
+    throw new Error("Mobile nav not found");
+  }
+
+  closeTrigger.addEventListener("click", () => {
+    document.body.classList.remove("overflow-hidden");
+    mobileNav.setAttribute("data-state", "closed");
+  });
+
+  openTrigger.addEventListener("click", () => {
+    document.body.classList.add("overflow-hidden");
+    mobileNav.setAttribute("data-state", "open");
+    closeTrigger.focus();
+  });
+</script>

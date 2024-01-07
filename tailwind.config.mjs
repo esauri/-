@@ -45,6 +45,11 @@ export default {
 	darkMode: ["class"],
 	theme: {
 		extend: {
+			animation: {
+				"fade-in": "fade 0.2s ease-in",
+				"fade-in-slide-up": "fade-in-slide-up 0.3s ease-in-out",
+				"signal": "signal 0.8s ease-out infinite",
+			},
 			backgroundImage: {
 				horsemask: "url('/images/horsemasks/dawnofthelivinghorsemasks.png')",
 				"neighbor-post": "url('/images/patch/qp_banner.jpg')",
@@ -85,6 +90,29 @@ export default {
 					"serif",
 				],
 			},
+			keyframes: {
+				"fade-in": {
+					from: { opacity: "0" },
+					to: { opacity: "1" },
+				},
+				"fade-in-slide-up": {
+					from: { opacity: "0", transform: "translateY(2rem)" },
+					to: { opacity: "1", transform: "translateY(0)" },
+				},
+				signal: {
+					"0%": {
+						bottom: "3rem",
+						opacity: "0",
+					},
+					"50%": {
+						opacity: "1",
+					},
+					"100%": {
+						opacity: "0",
+						bottom: "1.5rem"
+					}
+				},
+			},
 			typography(theme) {
 				const serifFontFamily = theme("fontFamily.serif").join(", ");
 
@@ -113,7 +141,9 @@ export default {
 		},
 	},
 	plugins: [
-		require("tailwind-scrollbar-hide"),
+		require("@tailwindcss/container-queries"),
 		require("@tailwindcss/typography"),
+		require("tailwindcss-animate"),
+		require("tailwind-scrollbar-hide"),
 	],
 }

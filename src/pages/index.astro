@@ -26,7 +26,7 @@ const projects = (await getCollection("projects")).sort(
         projects.map((project) => (
           <li class="flex flex-col odd:items-end md:even:mt-36 ">
             <ProjectCard
-              className="peer/card md:rounded-2xl"
+              className="peer/card w-full md:rounded-2xl"
               href={`/projects/${project.slug}`}
               title={project.data.title}
             >

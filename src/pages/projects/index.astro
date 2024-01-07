@@ -1,14 +1,12 @@
 ---
-import { getCollection } from "astro:content";
 import { ChevronRightIcon } from "lucide-solid";
+import { getProjects } from "../../api/projects";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import ProjectCardThumbnail from "../../components/ProjectCardThumbnail.astro";
 import ProjectCardTitle from "../../components/ProjectCardTitle.astro";
 
-const projects = (await getCollection("projects")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const projects = await getProjects();
 ---
 
 <BaseLayout
@@ -25,7 +23,7 @@ const projects = (await getCollection("projects")).sort(
         projects.map((project) => (
           <li class="flex flex-col odd:items-end md:even:mt-36 ">
             <ProjectCard
-              className="peer/card md:rounded-2xl"
+              className="peer/card w-full md:rounded-2xl"
               href={`/projects/${project.slug}`}
               title={project.data.title}
             >
