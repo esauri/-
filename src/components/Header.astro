@@ -80,7 +80,11 @@ const projects = await getProjects();
       {
         projects.map((project) => (
           <li>
-            <a class="flex gap-6 items-center">
+            <a
+              class="flex gap-6 items-center"
+              href={`/projects/${project.slug}`}
+              title={project.data.title}
+            >
               <img
                 alt={`${project.data.title} icon`}
                 class="rounded-full w-12"
