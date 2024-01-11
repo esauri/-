@@ -2,6 +2,7 @@
 import { MenuIcon, XIcon } from "lucide-solid";
 import { getProjects } from "../api/projects";
 import { AUTHOR_NAME, PERSONAL_LINKS } from "../consts";
+import Logo from "./Logo.astro";
 import NavLink from "./NavLink.astro";
 
 const projects = await getProjects();
@@ -11,11 +12,7 @@ const projects = await getProjects();
 <header>
   <nav class="container flex flex-row justify-between items-center py-4">
     <a href="/">
-      <img
-        alt={`${AUTHOR_NAME} Logo`}
-        class="h-8 w-8"
-        src="/images/icons/logo.svg"
-      />
+      <Logo />
     </a>
     <!-- Desktop Navigation -->
     <ul class="hidden md:flex flex-row gap-8">
@@ -60,11 +57,7 @@ const projects = await getProjects();
   <!-- Heading -->
   <div class="container flex flex-row justify-between items-center py-4">
     <a href="/">
-      <img
-        alt={`${AUTHOR_NAME} Logo`}
-        class="h-8 w-8"
-        src="/images/icons/logo.svg"
-      />
+      <Logo />
     </a>
     <button id="menu-close-trigger" type="button">
       <XIcon class="h-6 w-6" />
