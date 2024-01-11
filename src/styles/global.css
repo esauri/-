@@ -19,7 +19,7 @@
     --es-red: 6 78% 57%;
 
     /* Theme */
-    --es-background: var(--es-white);
+    --es-background: var(--es-gray-lightest);
     --es-foreground: var(--es-black);
     --es-border: var(--es-gray-light);
 
@@ -31,21 +31,6 @@
 
     --es-card: var(--es-gray-lightest);
     --es-card-foreground: var(--es-black);
-  }
-
-  @font-face {
-    font-family: var(--es-font-serif);
-    src: url("/fonts/lora-variable.ttf") format("ttf");
-    font-weight: 125 950;
-    font-stretch: 75% 125%;
-    font-style: normal;
-  }
-
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-    margin: 0;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -82,6 +67,21 @@
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
     }
+  }
+
+  @font-face {
+    font-family: var(--es-font-serif);
+    src: url("/fonts/lora-variable.ttf") format("ttf");
+    font-weight: 125 950;
+    font-stretch: 75% 125%;
+    font-style: normal;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+    margin: 0;
   }
 
   a {
