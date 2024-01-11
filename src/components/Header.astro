@@ -90,7 +90,7 @@ const projects = await getProjects();
                 class="rounded-full w-12"
                 src={project.data.icon}
               />
-              <span class="font-bold text-xl text-muted-foreground">
+              <span class="font-bold text-xl text-foreground">
                 {project.data.title}
               </span>
             </a>
@@ -103,14 +103,14 @@ const projects = await getProjects();
     <h2 class="font-bold text-2xl text-muted">General</h2>
     <ul class="grid grid-cols-2 gap-6">
       <li>
-        <a class="font-light text-lg text-white" href="/">Home</a>
+        <a class="font-light text-lg text-foreground" href="/">Home</a>
       </li>
       <li>
-        <a class="font-light text-lg text-white" href="/about">About</a>
+        <a class="font-light text-lg text-foreground" href="/about">About</a>
       </li>
       <li>
         <a
-          class="font-light text-lg text-white"
+          class="font-light text-lg text-foreground"
           rel="noopener noreferrer"
           target="_blank"
           href={PERSONAL_LINKS.github}>Github</a
@@ -118,7 +118,7 @@ const projects = await getProjects();
       </li>
       <li>
         <a
-          class="font-light text-lg text-white"
+          class="font-light text-lg text-foreground"
           rel="noopener noreferrer"
           target="_blank"
           href={PERSONAL_LINKS.resume}>Resume</a
