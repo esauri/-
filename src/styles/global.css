@@ -29,7 +29,7 @@
     --es-muted: var(--es-gray);
     --es-muted-foreground: var(--es-white);
 
-    --es-card: var(--es-gray-light);
+    --es-card: var(--es-gray-lightest);
     --es-card-foreground: var(--es-black);
   }
 

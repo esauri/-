@@ -1,7 +1,6 @@
 ---
 import { getEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { PERSONAL_LINKS } from "../consts";
 
 const about = await getEntry("misc", "about");
 
@@ -23,17 +22,5 @@ const { Content } = await about.render();
     >
       <Content />
     </article>
-    <!-- PDF CTA -->
-    <section class="bg-card text-card-foreground">
-      <section class="container flex flex-col gap-6 py-20 items-center">
-        <h3>Looking for a PDF of printable version of my resumé?</h3>
-        <a
-          class="bg-primary text-primary-foreground px-8 py-3 rounded shadow"
-          href={PERSONAL_LINKS.resume}
-          target="_blank"
-          rel="noopener noreferrer">Resumé</a
-        >
-      </section>
-    </section>
   </main>
 </BaseLayout>
