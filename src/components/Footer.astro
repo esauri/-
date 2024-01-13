@@ -9,12 +9,6 @@ import {
 } from "lucide-solid";
 import { AUTHOR_NAME, PERSONAL_LINKS } from "../consts";
 
-type Props = {
-  theme: string;
-};
-
-const { theme } = Astro.props;
-
 const today = new Date();
 ---
 
@@ -58,7 +52,7 @@ const today = new Date();
     <li class="flex items-center justify-center py-4">
       <form class="flex items-center gap-2" id="js-theme-form">
         <button
-          aria-checked={theme === "light" ? "true" : "false"}
+          aria-checked="false"
           aria-label="Switch to light theme"
           class="rounded-full border border-transparent p-2 hover:bg-primary/10 focus:border focus:border-primary active:bg-primary/20"
           name="theme"
@@ -70,7 +64,7 @@ const today = new Date();
           <SunIcon />
         </button>
         <button
-          aria-checked={theme === "dark" ? "true" : "false"}
+          aria-checked="false"
           aria-label="Switch to dark theme"
           class="rounded-full border border-transparent p-2 hover:bg-primary/10 focus:border focus:border-primary active:bg-primary/20"
           name="theme"
@@ -82,7 +76,7 @@ const today = new Date();
           <MoonIcon />
         </button>
         <button
-          aria-checked={theme === "system" ? "true" : "false"}
+          aria-checked="true"
           aria-label="Switch to system theme"
           class="rounded-full border border-transparent p-2 hover:bg-primary/10 focus:border focus:border-primary active:bg-primary/20"
           name="theme"
@@ -99,35 +93,15 @@ const today = new Date();
 </footer>
 
 <script>
-  import Cookies from "js-cookie";
-
-  const form = document.getElementById("js-theme-form");
-
-  if (!form) {
-    throw new Error("Theme form not found");
-  }
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (!event.submitter) return;
-
-    const selectedTheme = event.submitter.getAttribute("value");
-
+  function updateTheme(theme: string) {
     document.documentElement.classList.remove("light", "dark");
 
-    switch (selectedTheme) {
+    switch (theme) {
       case "light":
       case "dark":
-        Cookies.set("theme", selectedTheme, {
-          expires: 365,
-          sameSite: "strict",
-          secure: true,
-        });
-        document.documentElement.classList.add(selectedTheme);
+        document.documentElement.classList.add(theme);
         break;
       default:
-        Cookies.remove("theme");
         break;
     }
 
@@ -135,9 +109,46 @@ const today = new Date();
 
     themeButtons.forEach((button) => {
       const buttonTheme = button.getAttribute("value");
-      const isChecked = buttonTheme === selectedTheme;
+      const isChecked = buttonTheme === theme;
 
       button.setAttribute("aria-checked", isChecked ? "true" : "false");
     });
-  });
+  }
+
+  function setupForm() {
+    const form = document.getElementById("js-theme-form");
+
+    if (!form) {
+      throw new Error("Theme form not found");
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!event.submitter) return;
+
+      const selectedTheme = event.submitter.getAttribute("value") || "system";
+
+      updateTheme(selectedTheme);
+
+      switch (selectedTheme) {
+        case "light":
+        case "dark":
+          localStorage.setItem("theme", selectedTheme);
+          break;
+        default:
+          localStorage.removeItem("theme");
+          break;
+      }
+    });
+  }
+
+  function init() {
+    const theme = localStorage.getItem("theme") || "system";
+
+    updateTheme(theme);
+    setupForm();
+  }
+
+  document.addEventListener("astro:page-load", init);
 </script>
