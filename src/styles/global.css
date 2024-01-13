@@ -64,11 +64,19 @@
   }
 
   @font-face {
-    font-family: var(--es-font-serif);
-    src: url("/fonts/lora-variable.ttf") format("ttf");
+    font-family: "Lora";
+    src: url("/fonts/lora-variable.ttf") format("truetype");
     font-weight: 125 950;
     font-stretch: 75% 125%;
     font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Lora";
+    src: url("/fonts/lora-variable-italic.ttf") format("truetype");
+    font-weight: 125 950;
+    font-stretch: 75% 125%;
+    font-style: italic;
   }
 
   *,
