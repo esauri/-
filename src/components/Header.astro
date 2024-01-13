@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { MenuIcon, XIcon } from "lucide-solid";
 import { getProjects } from "../api/projects";
 import { PERSONAL_LINKS } from "../consts";
@@ -78,10 +79,12 @@ const projects = await getProjects();
               href={`/projects/${project.slug}`}
               title={project.data.title}
             >
-              <img
+              <Image
                 alt={`${project.data.title} icon`}
                 class="w-12 rounded-full"
+                height="48"
                 src={project.data.icon}
+                width="48"
               />
               <span class="text-xl font-bold text-foreground">
                 {project.data.title}
