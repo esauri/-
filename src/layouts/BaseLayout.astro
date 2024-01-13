@@ -6,17 +6,35 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
 type Props = {
   pageDescription?: string;
+  pageImage?: string;
   pageTitle?: string;
 };
 
-const { pageDescription = SITE_DESCRIPTION, pageTitle = SITE_TITLE } =
-  Astro.props;
+const {
+  pageDescription = SITE_DESCRIPTION,
+  pageImage,
+  pageTitle = SITE_TITLE,
+} = Astro.props;
+
+const themeCookie = Astro.cookies.get("theme");
+
+const theme = themeCookie?.value;
 ---
 
 <!doctype html>
-<html lang="en">
+<html
+  class:list={{
+    dark: theme === "dark",
+    light: theme === "light",
+  }}
+  lang="en"
+>
   <head>
-    <BaseHead description={pageDescription} title={pageTitle} />
+    <BaseHead
+      description={pageDescription}
+      image={pageImage}
+      title={pageTitle}
+    />
   </head>
   <body class="antialiased bg-background text-foreground font-sans">
     <Header />

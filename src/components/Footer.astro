@@ -1,37 +1,137 @@
 ---
-import { GithubIcon, LinkedinIcon } from "lucide-solid";
+import {
+  GithubIcon,
+  LinkedinIcon,
+  MailIcon,
+  MonitorIcon,
+  MoonIcon,
+  SunIcon,
+} from "lucide-solid";
 import { AUTHOR_NAME, PERSONAL_LINKS } from "../consts";
 
 const today = new Date();
 ---
 
 <footer class="py-8 lg:py-16">
-  <ul class="container grid lg:grid-cols-4">
+  <ul class="container grid lg:grid-cols-5">
     <li class="flex items-center justify-center py-4">
       &copy;
       {AUTHOR_NAME}
       {today.getFullYear()}
     </li>
     <li class="flex items-center justify-center py-4">
-      <a href={PERSONAL_LINKS.github} rel="noopener noreferrer" target="_blank">
-        <span class="sr-only">Go to {AUTHOR_NAME}'s Github profile</span>
-        <GithubIcon />
+      <a
+        aria-label={`Go to ${AUTHOR_NAME}'s Github profile`}
+        href={PERSONAL_LINKS.github}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <GithubIcon class="text-foreground" />
       </a>
     </li>
     <li class="flex items-center justify-center py-4">
       <a
+        aria-label={`View ${AUTHOR_NAME}'s LinkedIn profile`}
         href={PERSONAL_LINKS.linkedIn}
         rel="noopener noreferrer"
         target="_blank"
       >
-        <span class="sr-only">View {AUTHOR_NAME}'s LinkedIn profile</span>
-        <LinkedinIcon />
+        <LinkedinIcon class="text-foreground" />
       </a>
     </li>
     <li class="flex items-center justify-center py-4">
-      <a href={PERSONAL_LINKS.email} target="_blank">
-        ericksaurisyl[at]gmail[dot]com
+      <a
+        aria-label="Send email"
+        href={PERSONAL_LINKS.email}
+        target="_blank"
+        title="Send email"
+      >
+        <MailIcon class="text-foreground" />
       </a>
+    </li>
+    <li class="flex items-center justify-center py-4">
+      <form class="flex items-center gap-2" id="js-theme-form">
+        <button
+          aria-checked="false"
+          aria-label="Switch to light theme"
+          class="p-2 rounded-full hover:bg-primary/10 active:bg-primary/20 focus:border focus:border-primary border border-transparent"
+          name="theme"
+          role="radio"
+          title="Switch to light theme"
+          type="submit"
+          value="light"
+        >
+          <SunIcon />
+        </button>
+        <button
+          aria-checked="false"
+          aria-label="Switch to dark theme"
+          class="p-2 rounded-full hover:bg-primary/10 active:bg-primary/20 focus:border focus:border-primary border border-transparent"
+          name="theme"
+          role="radio"
+          title="Switch to dark theme"
+          type="submit"
+          value="dark"
+        >
+          <MoonIcon />
+        </button>
+        <button
+          aria-checked="false"
+          aria-label="Switch to system theme"
+          class="p-2 rounded-full hover:bg-primary/10 active:bg-primary/20 focus:border focus:border-primary border border-transparent"
+          name="theme"
+          role="radio"
+          title="Switch to system theme"
+          type="submit"
+          value="system"
+        >
+          <MonitorIcon />
+        </button>
+      </form>
     </li>
   </ul>
 </footer>
+
+<script>
+  import Cookies from "js-cookie";
+
+  const form = document.getElementById("js-theme-form");
+
+  if (!form) {
+    throw new Error("Theme form not found");
+  }
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!event.submitter) return;
+
+    const selectedTheme = event.submitter.getAttribute("value");
+
+    document.documentElement.classList.remove("light", "dark");
+
+    switch (selectedTheme) {
+      case "light":
+      case "dark":
+        Cookies.set("theme", selectedTheme, {
+          expires: 365,
+          sameSite: "strict",
+          secure: true,
+        });
+        document.documentElement.classList.add(selectedTheme);
+        break;
+      default:
+        Cookies.delete("theme");
+        break;
+    }
+
+    const themeButtons = document.getElementsByName("theme");
+
+    themeButtons.forEach((button) => {
+      const buttonTheme = button.getAttribute("value");
+      const isChecked = buttonTheme === selectedTheme;
+
+      button.setAttribute("aria-checked", isChecked ? "true" : "false");
+    });
+  });
+</script>

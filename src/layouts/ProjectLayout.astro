@@ -2,7 +2,6 @@
 import { type CollectionEntry } from "astro:content";
 import { ChevronDown } from "lucide-solid";
 import { getProjects } from "../api/projects";
-import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import ProjectCard from "../components/ProjectCard.astro";
@@ -12,6 +11,7 @@ import ProjectCardTitle from "../components/ProjectCardTitle.astro";
 import Tag from "../components/Tag.astro";
 import TagList from "../components/TagList.astro";
 import { AUTHOR_NAME } from "../consts";
+import BaseLayout from "./BaseLayout.astro";
 
 type Props = CollectionEntry<"projects">["data"];
 
@@ -23,81 +23,62 @@ const projects = await getProjects();
 const recirc = projects.filter((project) => project.slug !== slug).slice(0, 3);
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead
-      description={description}
-      image={thumbnail}
-      title={`${AUTHOR_NAME} - ${title}`}
-    />
-    <style>
-      .banner {
-        height: calc(100vh - 72px);
-      }
-
-      @supports (height: 100dvh) {
-        .banner {
-          height: calc(100dvh - 72px);
-        }
-      }
-    </style>
-  </head>
-  <body class="antialiased bg-background text-foreground font-sans">
-    <Header />
-    <main>
-      <!-- Hero Banner -->
-      <section
-        class:list={[
-          banner,
-          "relative flex justify-center items-center w-full min-h-96 bg-center bg-cover bg-scroll bg-no-repeat banner",
-        ]}
-      >
-        <ChevronDown
-          class="absolute animate-signal left-1/2 bottom-6 w-6 h-6"
-        />
-      </section>
-      <!-- Project Details -->
-      <article
-        class="container prose py-6 prose-img:mx-auto prose-img:rounded-lg"
-      >
-        <TagList scrollable>
-          {tags.map((tag) => <Tag>{tag}</Tag>)}
-        </TagList>
-        <h1>{title}</h1>
-        <slot />
-      </article>
-      {
-        recirc.length > 0 && (
-          <section class="flex flex-col gap-6">
-            <div class="container prose">
-              <h2>More Projects</h2>
-            </div>
-            <ul class="grid md:grid-cols-2 lg:grid-cols-3">
-              {recirc.map((project) => (
-                <li>
-                  <ProjectCard
-                    href={`/projects/${project.slug}`}
+<BaseLayout
+  pageDescription={description}
+  pageImage={thumbnail}
+  pageTitle={`${AUTHOR_NAME} - ${title}`}
+>
+  <Header />
+  <main>
+    <!-- Hero Banner -->
+    <section
+      class:list={[
+        banner,
+        "relative flex justify-center items-center w-full bg-center bg-cover bg-scroll bg-no-repeat h-[calc(100dvh-64px)]",
+      ]}
+    >
+      <ChevronDown class="absolute animate-signal left-1/2 bottom-6 w-6 h-6" />
+    </section>
+    <!-- Project Details -->
+    <article
+      class="container prose py-6 prose-img:mx-auto prose-img:rounded-lg"
+    >
+      <TagList scrollable>
+        {tags.map((tag) => <Tag>{tag}</Tag>)}
+      </TagList>
+      <h1>{title}</h1>
+      <slot />
+    </article>
+    {
+      recirc.length > 0 && (
+        <section class="flex flex-col gap-6">
+          <div class="container prose">
+            <h2>More Projects</h2>
+          </div>
+          <ul class="grid md:grid-cols-2 lg:grid-cols-3">
+            {recirc.map((project) => (
+              <li>
+                <ProjectCard
+                  href={`/projects/${project.slug}`}
+                  title={project.data.title}
+                >
+                  <ProjectCardThumbnail
+                    thumbnail={project.data.thumbnail}
                     title={project.data.title}
-                  >
-                    <ProjectCardThumbnail
-                      thumbnail={project.data.thumbnail}
-                      title={project.data.title}
-                    />
-                    <div class="absolute bottom-6 right-6 text-right">
-                      <ProjectCardTitle>{project.data.title}</ProjectCardTitle>
-                      <ProjectCardDescription>
-                        {project.data.description}
-                      </ProjectCardDescription>
-                    </div>
-                  </ProjectCard>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )
-      }
-    </main>
-    <Footer />
-  </body>
-</html>
+                  />
+                  <div class="absolute bottom-6 right-6 text-right">
+                    <ProjectCardTitle>{project.data.title}</ProjectCardTitle>
+                    <ProjectCardDescription>
+                      {project.data.description}
+                    </ProjectCardDescription>
+                  </div>
+                </ProjectCard>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </main>
+  <Footer />
+</BaseLayout>

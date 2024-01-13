@@ -17,6 +17,7 @@
     "@astrojs/solid-js": "^3.0.3",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.0.9",
+    "js-cookie": "^3.0.5",
     "lucide-solid": "^0.303.0",
     "solid-js": "^1.8.7",
     "tailwindcss": "^3.4.0",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.10",
+    "@types/js-cookie": "^3.0.6",
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss-animate": "^1.0.7"
   }
