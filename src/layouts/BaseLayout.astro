@@ -18,7 +18,7 @@ const {
 
 const themeCookie = Astro.cookies.get("theme");
 
-const theme = themeCookie?.value;
+const theme = themeCookie?.value || "system";
 ---
 
 <!doctype html>
@@ -39,6 +39,6 @@ const theme = themeCookie?.value;
   <body class="antialiased bg-background text-foreground font-sans">
     <Header />
     <slot />
-    <Footer />
+    <Footer theme={theme} />
   </body>
 </html>

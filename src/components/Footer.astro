@@ -9,6 +9,12 @@ import {
 } from "lucide-solid";
 import { AUTHOR_NAME, PERSONAL_LINKS } from "../consts";
 
+type Props = {
+  theme: string;
+};
+
+const { theme } = Astro.props;
+
 const today = new Date();
 ---
 
@@ -52,7 +58,7 @@ const today = new Date();
     <li class="flex items-center justify-center py-4">
       <form class="flex items-center gap-2" id="js-theme-form">
         <button
-          aria-checked="false"
+          aria-checked={theme === "light" ? "true" : "false"}
           aria-label="Switch to light theme"
           class="p-2 rounded-full hover:bg-primary/10 active:bg-primary/20 focus:border focus:border-primary border border-transparent"
           name="theme"
@@ -64,7 +70,7 @@ const today = new Date();
           <SunIcon />
         </button>
         <button
-          aria-checked="false"
+          aria-checked={theme === "dark" ? "true" : "false"}
           aria-label="Switch to dark theme"
           class="p-2 rounded-full hover:bg-primary/10 active:bg-primary/20 focus:border focus:border-primary border border-transparent"
           name="theme"
@@ -76,7 +82,7 @@ const today = new Date();
           <MoonIcon />
         </button>
         <button
-          aria-checked="false"
+          aria-checked={theme === "system" ? "true" : "false"}
           aria-label="Switch to system theme"
           class="p-2 rounded-full hover:bg-primary/10 active:bg-primary/20 focus:border focus:border-primary border border-transparent"
           name="theme"
