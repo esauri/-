@@ -1,0 +1,20 @@
+---
+type Props = {
+  scrollable: boolean;
+};
+
+const { scrollable } = Astro.props;
+---
+
+<ul
+  class:list={[
+    "flex items-center gap-1.5",
+    {
+      "-mx-6 scroll-pl-6 flex-row overflow-x-auto scrollbar-hide md:-mx-12 md:scroll-pl-12 lg:mx-0 lg:px-0":
+        scrollable,
+      "flex-wrap pl-0": !scrollable,
+    },
+  ]}
+>
+  <slot />
+</ul>

@@ -1,0 +1,24 @@
+{
+  "background_color": "#231f20",
+  "description": "Front End Developer. Focusing on web and mobile apps.",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "purpose": "any maskable",
+      "src": "/images/icons/logo-144x144.png",
+      "sizes": "144x144"
+    },
+    {
+      "purpose": "any maskable",
+      "src": "/images/icons/logo-192x192.png",
+      "sizes": "192x192"
+    }
+  ],
+  "id": "/?source=pwa",
+  "name": "Erick Sauri",
+  "orientation": "portrait",
+  "scope": "/",
+  "short_name": "Erick Sauri",
+  "start_url": "/",
+  "theme_color": "#f3f6fA"
+}

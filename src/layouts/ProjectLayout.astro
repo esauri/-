@@ -1,0 +1,80 @@
+---
+import { type CollectionEntry } from "astro:content";
+import { ChevronDown } from "lucide-solid";
+import { getProjects } from "../api/projects";
+import ProjectCard from "../components/ProjectCard.astro";
+import ProjectCardDescription from "../components/ProjectCardDescription.astro";
+import ProjectCardThumbnail from "../components/ProjectCardThumbnail.astro";
+import ProjectCardTitle from "../components/ProjectCardTitle.astro";
+import Tag from "../components/Tag.astro";
+import TagList from "../components/TagList.astro";
+import { AUTHOR_NAME } from "../consts";
+import BaseLayout from "./BaseLayout.astro";
+
+type Props = CollectionEntry<"projects">["data"];
+
+const { slug } = Astro.params;
+const { banner, description, tags, thumbnail, title } = Astro.props;
+
+const projects = await getProjects();
+
+const recirc = projects.filter((project) => project.slug !== slug).slice(0, 3);
+---
+
+<BaseLayout
+  pageDescription={description}
+  pageImage={thumbnail}
+  pageTitle={`${AUTHOR_NAME} - ${title}`}
+>
+  <main>
+    <!-- Hero Banner -->
+    <section
+      class:list={[
+        banner,
+        "relative flex h-[calc(100dvh-64px)] w-full items-center justify-center bg-cover bg-scroll bg-center bg-no-repeat",
+      ]}
+    >
+      <ChevronDown class="absolute bottom-6 left-1/2 h-6 w-6 animate-signal" />
+    </section>
+    <!-- Project Details -->
+    <article
+      class="container prose py-6 prose-img:mx-auto prose-img:rounded-lg"
+    >
+      <TagList scrollable>
+        {tags.map((tag) => <Tag>{tag}</Tag>)}
+      </TagList>
+      <h1>{title}</h1>
+      <slot />
+    </article>
+    {
+      recirc.length > 0 && (
+        <section class="flex flex-col gap-6">
+          <div class="container prose">
+            <h2>More Projects</h2>
+          </div>
+          <ul class="grid md:grid-cols-2 lg:grid-cols-3">
+            {recirc.map((project) => (
+              <li>
+                <ProjectCard
+                  href={`/projects/${project.slug}`}
+                  title={project.data.title}
+                >
+                  <ProjectCardThumbnail
+                    thumbnail={project.data.thumbnail}
+                    title={project.data.title}
+                  />
+                  <div class="absolute bottom-6 right-6 text-right">
+                    <ProjectCardTitle>{project.data.title}</ProjectCardTitle>
+                    <ProjectCardDescription>
+                      {project.data.description}
+                    </ProjectCardDescription>
+                  </div>
+                </ProjectCard>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </main>
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+type Props = {
+  className?: string;
+  href: string;
+  title: string;
+};
+
+const { className, href, title }: Props = Astro.props;
+---
+
+<a
+  class:list={["group/card relative block h-96 overflow-hidden", className]}
+  href={href}
+  title={title}
+>
+  <slot />
+</a>

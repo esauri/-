@@ -1,0 +1,44 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+type Props = {
+  pageDescription?: string;
+  pageImage?: string;
+  pageTitle?: string;
+};
+
+const {
+  pageDescription = SITE_DESCRIPTION,
+  pageImage,
+  pageTitle = SITE_TITLE,
+} = Astro.props;
+
+const themeCookie = Astro.cookies.get("theme");
+
+const theme = themeCookie?.value || "system";
+---
+
+<!doctype html>
+<html
+  class:list={{
+    dark: theme === "dark",
+    light: theme === "light",
+  }}
+  lang="en"
+>
+  <head>
+    <BaseHead
+      description={pageDescription}
+      image={pageImage}
+      title={pageTitle}
+    />
+  </head>
+  <body class="bg-background font-sans text-foreground antialiased">
+    <Header />
+    <slot />
+    <Footer theme={theme} />
+  </body>
+</html>

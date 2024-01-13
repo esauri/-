@@ -1,0 +1,163 @@
+---
+import { Image } from "astro:assets";
+import { MenuIcon, XIcon } from "lucide-solid";
+import { getProjects } from "../api/projects";
+import { PERSONAL_LINKS } from "../consts";
+import Logo from "./Logo.astro";
+import NavLink from "./NavLink.astro";
+
+const projects = await getProjects();
+---
+
+<!-- Header -->
+<header>
+  <nav class="container flex flex-row items-center justify-between py-4">
+    <a href="/">
+      <Logo />
+    </a>
+    <!-- Desktop Navigation -->
+    <ul class="hidden flex-row gap-8 md:flex">
+      <li>
+        <NavLink href="/about">About</NavLink>
+      </li>
+      <li>
+        <NavLink href="/projects">Projects</NavLink>
+      </li>
+      <li>
+        <NavLink
+          href={PERSONAL_LINKS.github}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Github
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          href={PERSONAL_LINKS.resume}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Resumé
+        </NavLink>
+      </li>
+    </ul>
+
+    <!-- Mobile -->
+    <button class="md:hidden" id="menu-open-trigger" type="button">
+      <MenuIcon class="h-6 w-6" />
+    </button>
+  </nav>
+</header>
+<!-- Mobile Nav -->
+<nav
+  class="group/menu absolute left-0 top-0 z-50 hidden h-full min-h-dvh w-full flex-col gap-6 overflow-y-auto bg-background data-[state=open]:animate-fade-in max-md:data-[state=open]:flex"
+  data-state="closed"
+  id="mobile-nav"
+>
+  <!-- Heading -->
+  <div class="container flex flex-row items-center justify-between py-4">
+    <a href="/">
+      <Logo />
+    </a>
+    <button id="menu-close-trigger" type="button">
+      <XIcon class="h-6 w-6" />
+    </button>
+  </div>
+
+  <section
+    class="container flex flex-col gap-6 pb-12 group-data-[state=open]/menu:animate-fade-in-slide-up"
+  >
+    <!-- Projects -->
+    <h2 class="text-2xl font-bold text-muted">Projects</h2>
+    <ul class="flex flex-col gap-6">
+      {
+        projects.map((project) => (
+          <li>
+            <a
+              class="flex items-center gap-6"
+              href={`/projects/${project.slug}`}
+              title={project.data.title}
+            >
+              <Image
+                alt={`${project.data.title} icon`}
+                class="w-12 rounded-full"
+                height="48"
+                src={project.data.icon}
+                width="48"
+              />
+              <span class="text-xl font-bold text-foreground">
+                {project.data.title}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- General -->
+    <h2 class="text-2xl font-bold text-muted">General</h2>
+    <ul class="grid grid-cols-2 gap-6">
+      <li>
+        <a class="text-lg font-light text-foreground" href="/">Home</a>
+      </li>
+      <li>
+        <a class="text-lg font-light text-foreground" href="/about">About</a>
+      </li>
+      <li>
+        <a
+          class="text-lg font-light text-foreground"
+          rel="noopener noreferrer"
+          target="_blank"
+          href={PERSONAL_LINKS.github}>Github</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg font-light text-foreground"
+          rel="noopener noreferrer"
+          target="_blank"
+          href={PERSONAL_LINKS.resume}>Resume</a
+        >
+      </li>
+    </ul>
+  </section>
+</nav>
+<script>
+  const closeTrigger = document.getElementById("menu-close-trigger");
+  const openTrigger = document.getElementById("menu-open-trigger");
+  const mobileNav = document.getElementById("mobile-nav");
+
+  if (!closeTrigger) {
+    throw new Error("Menu button not found");
+  }
+
+  if (!openTrigger) {
+    throw new Error("Menu button not found");
+  }
+
+  if (!mobileNav) {
+    throw new Error("Mobile nav not found");
+  }
+
+  closeTrigger.addEventListener("click", () => {
+    document.body.classList.remove("overflow-hidden");
+    mobileNav.setAttribute("data-state", "closed");
+  });
+
+  openTrigger.addEventListener("click", () => {
+    document.body.classList.add("overflow-hidden");
+    mobileNav.setAttribute("data-state", "open");
+    closeTrigger.focus();
+  });
+
+  window
+    .matchMedia("(min-width: 768px)")
+    .addEventListener("change", (event) => {
+      if (mobileNav.dataset.state === "open" && event.matches) {
+        closeTrigger.blur();
+        mobileNav.setAttribute("data-state", "closed");
+        document.body.classList.remove("overflow-hidden");
+      }
+    });
+</script>
