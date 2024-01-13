@@ -1,6 +1,6 @@
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 import solidJs from "@astrojs/solid-js";
 import tailwind from "@astrojs/tailwind";
 
@@ -16,5 +16,5 @@ export default defineConfig({
     "/twosevenzero": "/projects/two-seven-zero",
     "/venu": "/projects/venu",
   },
-  site: 'https://ericksauri.com',
+  site: "https://ericksauri.com",
 });

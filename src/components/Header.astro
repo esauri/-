@@ -10,12 +10,12 @@ const projects = await getProjects();
 
 <!-- Header -->
 <header>
-  <nav class="container flex flex-row justify-between items-center py-4">
+  <nav class="container flex flex-row items-center justify-between py-4">
     <a href="/">
       <Logo />
     </a>
     <!-- Desktop Navigation -->
-    <ul class="hidden md:flex flex-row gap-8">
+    <ul class="hidden flex-row gap-8 md:flex">
       <li>
         <NavLink href="/about">About</NavLink>
       </li>
@@ -50,12 +50,12 @@ const projects = await getProjects();
 </header>
 <!-- Mobile Nav -->
 <nav
-  class="group/menu hidden data-[state=open]:animate-fade-in max-md:data-[state=open]:flex flex-col gap-6 absolute top-0 left-0 w-full h-full min-h-dvh bg-background z-50 overflow-y-auto"
+  class="group/menu absolute left-0 top-0 z-50 hidden h-full min-h-dvh w-full flex-col gap-6 overflow-y-auto bg-background data-[state=open]:animate-fade-in max-md:data-[state=open]:flex"
   data-state="closed"
   id="mobile-nav"
 >
   <!-- Heading -->
-  <div class="container flex flex-row justify-between items-center py-4">
+  <div class="container flex flex-row items-center justify-between py-4">
     <a href="/">
       <Logo />
     </a>
@@ -65,25 +65,25 @@ const projects = await getProjects();
   </div>
 
   <section
-    class="container group-data-[state=open]/menu:animate-fade-in-slide-up flex flex-col gap-6 pb-12"
+    class="container flex flex-col gap-6 pb-12 group-data-[state=open]/menu:animate-fade-in-slide-up"
   >
     <!-- Projects -->
-    <h2 class="font-bold text-2xl text-muted">Projects</h2>
+    <h2 class="text-2xl font-bold text-muted">Projects</h2>
     <ul class="flex flex-col gap-6">
       {
         projects.map((project) => (
           <li>
             <a
-              class="flex gap-6 items-center"
+              class="flex items-center gap-6"
               href={`/projects/${project.slug}`}
               title={project.data.title}
             >
               <img
                 alt={`${project.data.title} icon`}
-                class="rounded-full w-12"
+                class="w-12 rounded-full"
                 src={project.data.icon}
               />
-              <span class="font-bold text-xl text-foreground">
+              <span class="text-xl font-bold text-foreground">
                 {project.data.title}
               </span>
             </a>
@@ -93,17 +93,17 @@ const projects = await getProjects();
     </ul>
 
     <!-- General -->
-    <h2 class="font-bold text-2xl text-muted">General</h2>
+    <h2 class="text-2xl font-bold text-muted">General</h2>
     <ul class="grid grid-cols-2 gap-6">
       <li>
-        <a class="font-light text-lg text-foreground" href="/">Home</a>
+        <a class="text-lg font-light text-foreground" href="/">Home</a>
       </li>
       <li>
-        <a class="font-light text-lg text-foreground" href="/about">About</a>
+        <a class="text-lg font-light text-foreground" href="/about">About</a>
       </li>
       <li>
         <a
-          class="font-light text-lg text-foreground"
+          class="text-lg font-light text-foreground"
           rel="noopener noreferrer"
           target="_blank"
           href={PERSONAL_LINKS.github}>Github</a
@@ -111,7 +111,7 @@ const projects = await getProjects();
       </li>
       <li>
         <a
-          class="font-light text-lg text-foreground"
+          class="text-lg font-light text-foreground"
           rel="noopener noreferrer"
           target="_blank"
           href={PERSONAL_LINKS.resume}>Resume</a

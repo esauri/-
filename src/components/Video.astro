@@ -7,10 +7,10 @@ type Props = {
 const { src, title } = Astro.props;
 ---
 
-<section class="h-0 overflow-hidden relative pb-[56.25%]">
+<section class="relative h-0 overflow-hidden pb-[56.25%]">
   <iframe
     allowfullscreen
-    class="top-0 left-0 w-full h-full absolute"
+    class="absolute left-0 top-0 h-full w-full"
     height="236"
     src={src}
     title={title}

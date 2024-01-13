@@ -12,7 +12,7 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 <a
   aria-current={isActive ? "page" : undefined}
   class:list={[
-    "text-foreground after:block after:content-[''] after:border-b-2 after:border-foreground after:transition-transform after:duration-200 hover:after:border-primary hover:text-primary",
+    "text-foreground after:block after:border-b-2 after:border-foreground after:transition-transform after:duration-200 after:content-[''] hover:text-primary hover:after:border-primary",
     {
       "after:scale-x-0 hover:after:scale-100": !isActive,
     },

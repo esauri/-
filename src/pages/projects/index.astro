@@ -35,7 +35,7 @@ const projects = await getProjects();
                 <ProjectCardTitle>{project.data.title}</ProjectCardTitle>
               </div>
             </ProjectCard>
-            <div class="hidden gap-1 items-center px-6 py-2 peer-hover/card:opacity-100 peer-hover/card:translate-y-0 md:flex opacity-0 translate-y-1/2 transition-all duration-200">
+            <div class="hidden translate-y-1/2 items-center gap-1 px-6 py-2 opacity-0 transition-all duration-200 peer-hover/card:translate-y-0 peer-hover/card:opacity-100 md:flex">
               <span class="text-xl font-bold">view project</span>
               <ChevronRightIcon class="h-4 w-4" />
             </div>

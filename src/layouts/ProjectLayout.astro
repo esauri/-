@@ -31,10 +31,10 @@ const recirc = projects.filter((project) => project.slug !== slug).slice(0, 3);
     <section
       class:list={[
         banner,
-        "relative flex justify-center items-center w-full bg-center bg-cover bg-scroll bg-no-repeat h-[calc(100dvh-64px)]",
+        "relative flex h-[calc(100dvh-64px)] w-full items-center justify-center bg-cover bg-scroll bg-center bg-no-repeat",
       ]}
     >
-      <ChevronDown class="absolute animate-signal left-1/2 bottom-6 w-6 h-6" />
+      <ChevronDown class="absolute bottom-6 left-1/2 h-6 w-6 animate-signal" />
     </section>
     <!-- Project Details -->
     <article
