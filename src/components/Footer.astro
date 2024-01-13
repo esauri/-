@@ -127,7 +127,7 @@ const today = new Date();
         document.documentElement.classList.add(selectedTheme);
         break;
       default:
-        Cookies.delete("theme");
+        Cookies.remove("theme");
         break;
     }
 
