@@ -15,20 +15,10 @@ const {
   pageImage,
   pageTitle = SITE_TITLE,
 } = Astro.props;
-
-const themeCookie = Astro.cookies.get("theme");
-
-const theme = themeCookie?.value || "system";
 ---
 
 <!doctype html>
-<html
-  class:list={{
-    dark: theme === "dark",
-    light: theme === "light",
-  }}
-  lang="en"
->
+<html lang="en">
   <head>
     <BaseHead
       description={pageDescription}
@@ -39,6 +29,6 @@ const theme = themeCookie?.value || "system";
   <body class="bg-background font-sans text-foreground antialiased">
     <Header />
     <slot />
-    <Footer theme={theme} />
+    <Footer />
   </body>
 </html>
