@@ -18,19 +18,34 @@
 
     --es-red: 6 78% 57%;
 
-    /* Light Theme */
-    --es-background: var(--es-gray-lightest);
-    --es-foreground: var(--es-black);
-    --es-border: var(--es-gray-light);
+    /* Default (dark) */
+    --es-background: var(--es-gray-darkest);
+    --es-foreground: var(--es-white);
+    --es-border: var(--es-gray-darker);
 
-    --es-primary: var(--es-red);
-    --es-primary-foreground: var(--es-white);
-
-    --es-muted: var(--es-gray);
+    --es-muted: var(--es-gray-dark);
     --es-muted-foreground: var(--es-white);
 
-    --es-card: var(--es-gray-lightest);
-    --es-card-foreground: var(--es-black);
+    --es-card: var(--es-gray-darker);
+    --es-card-foreground: var(--es-white);
+  }
+
+  /* Light Theme */
+  @media (prefers-color-scheme: light) {
+    :root {
+      --es-background: var(--es-gray-lightest);
+      --es-foreground: var(--es-black);
+      --es-border: var(--es-gray-light);
+
+      --es-primary: var(--es-red);
+      --es-primary-foreground: var(--es-white);
+
+      --es-muted: var(--es-gray);
+      --es-muted-foreground: var(--es-white);
+
+      --es-card: var(--es-gray-lightest);
+      --es-card-foreground: var(--es-black);
+    }
   }
 
   /* Dark Theme */
