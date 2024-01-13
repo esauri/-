@@ -23,6 +23,16 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
+<meta
+  name="theme-color"
+  media="(prefers-color-scheme: light)"
+  content="#f3f6fA"
+/>
+<meta
+  name="theme-color"
+  media="(prefers-color-scheme: dark)"
+  content="#231f20"
+/>
 
 <!-- Font preloads -->
 <link
