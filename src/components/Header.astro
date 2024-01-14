@@ -124,40 +124,44 @@ const projects = await getProjects();
   </section>
 </nav>
 <script>
-  const closeTrigger = document.getElementById("menu-close-trigger");
-  const openTrigger = document.getElementById("menu-open-trigger");
-  const mobileNav = document.getElementById("mobile-nav");
+  function setupNav() {
+    const closeTrigger = document.getElementById("menu-close-trigger");
+    const openTrigger = document.getElementById("menu-open-trigger");
+    const mobileNav = document.getElementById("mobile-nav");
 
-  if (!closeTrigger) {
-    throw new Error("Menu button not found");
-  }
+    if (!closeTrigger) {
+      throw new Error("Menu button not found");
+    }
 
-  if (!openTrigger) {
-    throw new Error("Menu button not found");
-  }
+    if (!openTrigger) {
+      throw new Error("Menu button not found");
+    }
 
-  if (!mobileNav) {
-    throw new Error("Mobile nav not found");
-  }
+    if (!mobileNav) {
+      throw new Error("Mobile nav not found");
+    }
 
-  closeTrigger.addEventListener("click", () => {
-    document.body.classList.remove("overflow-hidden");
-    mobileNav.setAttribute("data-state", "closed");
-  });
-
-  openTrigger.addEventListener("click", () => {
-    document.body.classList.add("overflow-hidden");
-    mobileNav.setAttribute("data-state", "open");
-    closeTrigger.focus();
-  });
-
-  window
-    .matchMedia("(min-width: 768px)")
-    .addEventListener("change", (event) => {
-      if (mobileNav.dataset.state === "open" && event.matches) {
-        closeTrigger.blur();
-        mobileNav.setAttribute("data-state", "closed");
-        document.body.classList.remove("overflow-hidden");
-      }
+    closeTrigger.addEventListener("click", () => {
+      document.body.classList.remove("overflow-hidden");
+      mobileNav.setAttribute("data-state", "closed");
     });
+
+    openTrigger.addEventListener("click", () => {
+      document.body.classList.add("overflow-hidden");
+      mobileNav.setAttribute("data-state", "open");
+      closeTrigger.focus();
+    });
+
+    window
+      .matchMedia("(min-width: 768px)")
+      .addEventListener("change", (event) => {
+        if (mobileNav.dataset.state === "open" && event.matches) {
+          closeTrigger.blur();
+          mobileNav.setAttribute("data-state", "closed");
+          document.body.classList.remove("overflow-hidden");
+        }
+      });
+  }
+
+  document.addEventListener("astro:page-load", setupNav);
 </script>
