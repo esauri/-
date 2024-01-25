@@ -46,7 +46,7 @@ export default {
   theme: {
     extend: {
       animation: {
-        "fade-in": "fade 0.2s ease-in",
+        "fade-in": "fade-in 0.2s ease-in",
         "fade-in-slide-up": "fade-in-slide-up 0.3s ease-in-out",
         signal: "signal 0.8s ease-out infinite",
       },
