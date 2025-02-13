@@ -13,12 +13,12 @@ import BaseLayout from "./BaseLayout.astro";
 
 type Props = CollectionEntry<"projects">["data"];
 
-const { slug } = Astro.params;
+const { id } = Astro.params;
 const { banner, description, tags, thumbnail, title } = Astro.props;
 
 const projects = await getProjects();
 
-const recirc = projects.filter((project) => project.slug !== slug).slice(0, 3);
+const recirc = projects.filter((project) => project.id !== id).slice(0, 3);
 ---
 
 <BaseLayout
@@ -56,7 +56,7 @@ const recirc = projects.filter((project) => project.slug !== slug).slice(0, 3);
             {recirc.map((project) => (
               <li>
                 <ProjectCard
-                  href={`/projects/${project.slug}`}
+                  href={`/projects/${project.id}`}
                   title={project.data.title}
                 >
                   <ProjectCardThumbnail
